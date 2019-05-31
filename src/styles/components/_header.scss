@@ -1,0 +1,14 @@
+.header {
+  align-items: center;
+  box-shadow: 0 4px 4px #00000011;
+  display: flex;
+  max-height: 3.5rem;
+  padding: 1rem 0.75rem;
+
+  h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}

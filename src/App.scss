@@ -1,0 +1,17 @@
+// ABSTRACT
+@import "./styles/abstract/typography";
+@import "./styles/abstract/colors";
+
+// COMPONENTS
+@import "./styles/components/header";
+@import "./styles/components/nav-item.scss";
+@import "./styles/components/tab.scss";
+@import "./styles/components/footer";
+
+.main-wrapper {
+  position: fixed;
+  height: calc(100vh - 7rem);
+  width: 100%;
+  padding: 1rem 0.75rem;
+  overflow-y: scroll;
+}

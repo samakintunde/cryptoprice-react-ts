@@ -1,0 +1,25 @@
+.nav__item {
+  background-color: $black;
+  color: $gray-a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  width: 25%;
+
+  p {
+    font-size: 0.6rem;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  &:hover {
+    // background-color: $gray-3;
+  }
+
+  &--active {
+    @extend .nav__item;
+    color: $white;
+  }
+}
