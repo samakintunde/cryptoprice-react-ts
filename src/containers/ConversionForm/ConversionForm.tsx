@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Icon, Input, InputNumber, Button, Select } from "antd";
+import { Row, Col, Form, InputNumber, Button, Select } from "antd";
 
 import { fiatCurrencies, cryptoCurrencies } from "../../store/currencies";
 
@@ -70,6 +70,7 @@ const ConversionForm = ({ handleSubmit }: Props) => {
             <Button
               className="conversion-submit-btn"
               type="primary"
+              style={{ backgroundColor: "#000000" }}
               loading={loading}
               block
             >

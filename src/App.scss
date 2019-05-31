@@ -6,12 +6,19 @@
 @import "./styles/components/header";
 @import "./styles/components/nav-item.scss";
 @import "./styles/components/tab.scss";
+@import "./styles/components/currency-card.scss";
 @import "./styles/components/footer";
 
 .main-wrapper {
   position: fixed;
+  // top: 3.5rem;
+  // height: 100vh;
   height: calc(100vh - 7rem);
   width: 100%;
-  padding: 1rem 0.75rem;
   overflow-y: scroll;
+}
+
+.conversion-submit-btn {
+  border: 0;
+  background-color: $black;
 }

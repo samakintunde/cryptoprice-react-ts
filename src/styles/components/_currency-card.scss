@@ -1,0 +1,47 @@
+.currency-card {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $gray-e;
+  padding: 0.5rem 0;
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image-wrapper {
+    margin-right: 1rem;
+    position: relative;
+
+    img {
+      max-height: 3rem;
+    }
+
+    &:after {
+      position: absolute;
+      content: "";
+      left: 0;
+      padding-right: 3rem;
+    }
+  }
+
+  &__caption {
+    font-size: 0.75rem;
+    color: $gray-5;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+
+  &__title,
+  &__price {
+    margin-bottom: 0;
+    font-weight: bold;
+    color: $black;
+  }
+
+  &__numbers {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+  }
+}

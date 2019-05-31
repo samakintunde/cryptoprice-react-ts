@@ -1,6 +1,6 @@
 {
   "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "CryptoPrice",
   "icons": [
     {
       "src": "favicon.ico",
@@ -9,7 +9,7 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
+  "display": "minimal-ui",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }

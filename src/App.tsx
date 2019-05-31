@@ -1,14 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import ConversionPage from "./screens/ConversionPage";
 import Footer from "./containers/Footer/Footer";
 import Header from "./components/Header/Header";
 
-import { FooterContextProvider, FooterContext } from "./context/FooterContext";
+import HomePage from "./screens/HomePage";
+
+import { FooterContext } from "./context/FooterContext";
 
 import "antd/dist/antd.css";
 import "./App.scss";
-import HomePage from "./screens/HomePage";
 
 const App: React.FC = () => {
   const { activeIndex } = useContext(FooterContext);
@@ -17,13 +18,12 @@ const App: React.FC = () => {
     switch (activeIndex.activeIndex) {
       case 0:
         return <HomePage />;
-        break;
 
       case 1:
         return <ConversionPage />;
 
       default:
-        break;
+        return <h3>Nothing to see here, hurry along now!</h3>;
     }
   };
 

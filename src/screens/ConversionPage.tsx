@@ -1,5 +1,7 @@
 import React from "react";
+
 import ConversionForm from "../containers/ConversionForm/ConversionForm";
+import Container from "../components/Container/Container";
 
 const ConversionPage = () => {
   const fetchConversions = (from: string, amount: string, to: string) => {
@@ -9,7 +11,9 @@ const ConversionPage = () => {
 
   return (
     <div>
-      <ConversionForm handleSubmit={fetchConversions} />
+      <Container padding="1rem 0.75rem">
+        <ConversionForm handleSubmit={fetchConversions} />
+      </Container>
     </div>
   );
 };

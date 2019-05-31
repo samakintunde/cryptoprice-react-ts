@@ -1,32 +1,54 @@
 import React from "react";
-import { Tabs, Radio } from "antd";
+import { Tabs } from "antd";
+
+import Container from "../components/Container/Container";
+import CurrencyCard from "../components/CurrencyCard/CurrencyCard";
 
 import homeTabs from "../store/home-tabs";
+import currencyResults from "../store/currency-results";
 
 const { TabPane } = Tabs;
 
 const HomePage = () => {
-  const handleModeChange = () => {};
+  const renderTabPane = (index: number) => {
+    switch (index) {
+      case 0:
+        return currencyResults.map((result, i) => (
+          <CurrencyCard key={i} {...result} />
+        ));
+
+      case 1:
+        const topGainers = currencyResults.filter(
+          (result, i) => result.percentage_change.slice(0, 1) !== "-"
+        );
+        return topGainers.map((result, i) => (
+          <CurrencyCard key={i} {...result} />
+        ));
+
+      case 2:
+        const topLosers = currencyResults.filter(
+          (result, i) => result.percentage_change.slice(0, 1) === "-"
+        );
+        return topLosers.map((result, i) => (
+          <CurrencyCard key={i} {...result} />
+        ));
+
+      default:
+        return <h3>Nothing to see here</h3>;
+    }
+  };
 
   return (
     <div>
-      <Radio.Group
-        onChange={handleModeChange}
-        value="top"
-        style={{ marginBottom: 8 }}
-      >
-        <Radio.Button value="top">Global</Radio.Button>
-        <Radio.Button value="left">Top Gainers</Radio.Button>
-        <Radio.Button value="left">Top Losers</Radio.Button>
-      </Radio.Group>
       <Tabs
         defaultActiveKey="0"
         tabPosition="top"
         tabBarStyle={{ display: "flex", width: "100%" }}
       >
-        {homeTabs.map((tab: string, i: number) => (
-          <TabPane tab={tab} key={`${i}`}>
-            {tab}
+        {homeTabs.map((tab: string, index: number) => (
+          <TabPane tab={tab} key={`${index}`}>
+            <Container padding="0 0.75rem">{renderTabPane(index)}</Container>
+            {/* {renderTabPane(index)} */}
           </TabPane>
         ))}
       </Tabs>
