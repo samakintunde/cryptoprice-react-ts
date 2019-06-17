@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 
-import { FooterContext } from "../../context/FooterContext";
-import footerMenu from "../../store/footer-items";
+import { FooterContext } from "./../../context/FooterContext";
+import footerMenu from "./../../store/footer-items";
 
-import NavItem from "../../components/NavItem/NavItem";
+import NavItem from "./../../components/NavItem/NavItem";
 
 const Footer: React.FC = () => {
   const { activeIndex, dispatchActiveIndex } = useContext(FooterContext);
