@@ -1,0 +1,23 @@
+.conversion {
+  min-height: calc(100vh - 7rem);
+
+  &__result-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 20vh;
+    width: 100%;
+    margin: 5rem 0;
+
+    @include breakpoint(tablet) {
+      flex-direction: row;
+    }
+  }
+
+  &__equality {
+    font-size: 2rem 4rem;
+    font-weight: 900;
+    padding: 2rem;
+  }
+}

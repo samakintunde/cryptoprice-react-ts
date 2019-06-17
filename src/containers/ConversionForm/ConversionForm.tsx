@@ -8,17 +8,16 @@ const { Item } = Form;
 
 interface Props {
   handleSubmit: any;
+  loading: any;
 }
 
-const ConversionForm = ({ handleSubmit }: Props) => {
-  const [loading, setLoading] = useState(false);
+const ConversionForm = ({ handleSubmit, loading }: Props) => {
   const [amount, setAmount] = useState("1");
   const [fromCurrency, setFromCurrency] = useState("NGN");
   const [toCurrency, setToCurrency] = useState("BTC");
 
   const handleConversionFormSubmit = (e: any) => {
     e.preventDefault();
-    setLoading(!loading);
     handleSubmit(amount, fromCurrency, toCurrency);
   };
 
@@ -66,27 +65,16 @@ const ConversionForm = ({ handleSubmit }: Props) => {
       </Item>
       <Item>
         <Row type="flex" justify="center">
-          {loading ? (
-            <Button
-              className="conversion-submit-btn"
-              type="primary"
-              style={{ backgroundColor: "#000000" }}
-              loading={loading}
-              block
-            >
-              Converting
-            </Button>
-          ) : (
-            <Button
-              className="conversion-submit-btn"
-              htmlType="submit"
-              type="primary"
-              loading={loading}
-              block
-            >
-              Convert
-            </Button>
-          )}
+          <Button
+            className="conversion-submit-btn"
+            type="primary"
+            style={{ backgroundColor: "#000000" }}
+            loading={loading}
+            htmlType={loading ? "button" : "submit"}
+            block
+          >
+            {loading ? "Converting" : "Convert"}
+          </Button>
         </Row>
       </Item>
     </Form>

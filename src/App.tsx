@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 
-import ConversionPage from "./screens/ConversionPage";
 import Footer from "./containers/Footer/Footer";
 import Header from "./components/Header/Header";
 
 import HomePage from "./screens/HomePage";
+import ConversionPage from "./screens/ConversionPage";
+import FavoritesPage from "./screens/FavoritesPage";
 
 import { FooterContext } from "./context/FooterContext";
 
@@ -21,6 +22,9 @@ const App: React.FC = () => {
 
       case 1:
         return <ConversionPage />;
+
+      case 2:
+        return <FavoritesPage />;
 
       default:
         return <h3>Nothing to see here, hurry along now!</h3>;

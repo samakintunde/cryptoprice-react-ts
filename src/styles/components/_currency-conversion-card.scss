@@ -1,0 +1,28 @@
+.currency-conversion-card {
+  @extend %card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 10rem;
+  border-radius: 0.25rem;
+
+  &__image {
+    height: 4rem;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  &__amount {
+    text-align: center;
+    font-weight: 900;
+    font-size: 2rem;
+    margin-top: 1rem;
+    word-break: break-all;
+  }
+
+  &__currency {
+  }
+}

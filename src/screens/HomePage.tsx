@@ -1,37 +1,98 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+
 import { Tabs } from "antd";
 
 import Container from "../components/Container/Container";
 import CurrencyCard from "../components/CurrencyCard/CurrencyCard";
 
 import homeTabs from "../store/home-tabs";
-import currencyResults from "../store/currency-results";
+import { HomeContext } from "../context/HomeContext";
+import { FavoritesContext } from "../context/FavoritesContext";
 
 const { TabPane } = Tabs;
 
 const HomePage = () => {
+  const { results } = useContext(HomeContext);
+  const { dispatchFavorites } = useContext(FavoritesContext);
+
+  const { currencyResults } = results;
+
+  const handleFavorite = (currencyResult: object) => {
+    dispatchFavorites({ payload: currencyResult });
+  };
+
+  const API = "https://min-api.cryptocompare.com/data/top/";
+
+  const fetchTopCurrencies = () => {
+    fetch(
+      `${API}totalvolfull?limit=10&tsym=NGN&api_key=${
+        process.env.REACT_APP_CRYPTOCOMPARE_API_KEY
+      }`
+    )
+      .then(res => res.json())
+      .then(data => console.log(data.Data));
+  };
+
+  useEffect(() => {
+    return () => {
+      fetchTopCurrencies();
+    };
+  }, []);
+
   const renderTabPane = (index: number) => {
     switch (index) {
       case 0:
-        return currencyResults.map((result, i) => (
-          <CurrencyCard key={i} {...result} />
-        ));
+        return currencyResults.map(
+          (currencyResult: any, i: string | number | undefined) => (
+            <CurrencyCard
+              key={i}
+              currencyResult={currencyResult}
+              handleFavorite={handleFavorite}
+            />
+          )
+        );
 
       case 1:
         const topGainers = currencyResults.filter(
-          (result, i) => result.percentage_change.slice(0, 1) !== "-"
+          (
+            result: {
+              percentage_change: {
+                slice: (arg0: number, arg1: number) => string;
+              };
+            },
+            i: any
+          ) => result.percentage_change.slice(0, 1) !== "-"
         );
-        return topGainers.map((result, i) => (
-          <CurrencyCard key={i} {...result} />
-        ));
+        return topGainers.map(
+          (currencyResult: any, i: string | number | undefined) => (
+            <CurrencyCard
+              key={i}
+              currencyResult={currencyResult}
+              handleFavorite={handleFavorite}
+            />
+          )
+        );
 
       case 2:
         const topLosers = currencyResults.filter(
-          (result, i) => result.percentage_change.slice(0, 1) === "-"
+          (
+            result: {
+              percentage_change: {
+                slice: (arg0: number, arg1: number) => string;
+              };
+            },
+            i: any
+          ) => result.percentage_change.slice(0, 1) === "-"
         );
-        return topLosers.map((result, i) => (
-          <CurrencyCard key={i} {...result} />
-        ));
+        return topLosers.map(
+          (currencyResult: any, i: string | number | undefined) => (
+            <CurrencyCard
+              key={i}
+              currencyResult={currencyResult}
+              handleFavorite={handleFavorite}
+            />
+          )
+        );
 
       default:
         return <h3>Nothing to see here</h3>;

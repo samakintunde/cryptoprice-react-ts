@@ -1,18 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
+import { Icon } from "antd";
 
 import ConversionForm from "../containers/ConversionForm/ConversionForm";
 import Container from "../components/Container/Container";
+import CurrencyConversionCard from "../components/CurrencyCard/CurrencyConversionCard";
+import CurrencyCard from "../components/CurrencyCard/CurrencyCard";
 
 const ConversionPage = () => {
-  const fetchConversions = (from: string, amount: string, to: string) => {
-    // fetch();
-    console.log(from);
+  const [fetching, setFetching] = useState(false);
+  const [result, setResult] = useState();
+  const [from, setFrom] = useState();
+  const [to, setTo] = useState();
+  const [toAmount, setToAmount] = useState();
+  const [fromAmount, setFromAmount] = useState();
+
+  const API = `https://min-api.cryptocompare.com/data/`;
+
+  const fetchConversions = (amount: string, from: string, to: string) => {
+    setFetching(true);
+    fetch(
+      `${API}price?fsym=${from}&tsyms=${to}&api_key=${
+        process.env.REACT_APP_CRYPTOCOMPARE_API_KEY
+      }`
+    )
+      .then(data => data.json())
+      .then(res => {
+        console.log(res);
+        setResult(res);
+        setFetching(false);
+        setFromAmount(Number(amount));
+        setToAmount(Number(amount) * res[to] + "");
+        setFrom(from);
+        setTo(to);
+      });
+  };
+
+  const renderResults = () => {
+    if (fetching === false && result) {
+      return (
+        (
+          <section className="conversion__result-wrapper">
+            <CurrencyConversionCard
+              amount={fromAmount}
+              currency="Naira"
+              image="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
+              name="Naira"
+            />
+            <p className="conversion__equality">=</p>
+            <CurrencyConversionCard
+              amount={toAmount}
+              currency="Bitcoin"
+              image="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
+              name="Bitcoin"
+            />
+          </section>
+        ) || ""
+      );
+    } else if (fetching === true) {
+      return (
+        <section className="conversion__result-wrapper">
+          <Icon type="loading" style={{ fontSize: "2rem", color: "#000" }} />
+        </section>
+      );
+    }
   };
 
   return (
-    <div>
+    <div className="conversion">
       <Container padding="1rem 0.75rem">
-        <ConversionForm handleSubmit={fetchConversions} />
+        <ConversionForm handleSubmit={fetchConversions} loading={fetching} />
+        {renderResults()}
       </Container>
     </div>
   );

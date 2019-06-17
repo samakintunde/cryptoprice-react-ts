@@ -1,4 +1,5 @@
 // ABSTRACT
+@import "./styles/abstract/breakpoints";
 @import "./styles/abstract/typography";
 @import "./styles/abstract/colors";
 
@@ -6,8 +7,11 @@
 @import "./styles/components/header";
 @import "./styles/components/nav-item.scss";
 @import "./styles/components/tab.scss";
+@import "./styles/components/card.scss";
 @import "./styles/components/currency-card.scss";
+@import "./styles/components/currency-conversion-card.scss";
 @import "./styles/components/footer";
+@import "./styles//components/conversion";
 
 .main-wrapper {
   position: fixed;
@@ -16,6 +20,10 @@
   height: calc(100vh - 7rem);
   width: 100%;
   overflow-y: scroll;
+
+  @include breakpoint(tablet) {
+    padding-left: 5rem;
+  }
 }
 
 .conversion-submit-btn {

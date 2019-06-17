@@ -1,5 +1,7 @@
 const currencyResults = [
   {
+    id: 1,
+    isFavorite: true,
     image:
       "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
     last_updated: "2019-05-31T11:24:01.611Z",
@@ -9,6 +11,8 @@ const currencyResults = [
     symbol: "btc"
   },
   {
+    id: 2,
+    isFavorite: false,
     image:
       "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1547034048",
     last_updated: "2019-05-31T11:24:01.611Z",
@@ -18,6 +22,8 @@ const currencyResults = [
     symbol: "eth"
   },
   {
+    id: 3,
+    isFavorite: true,
     image:
       "https://assets.coingecko.com/coins/images/44/large/XRP.png?1547033685",
     last_updated: "2019-05-31T11:24:01.611Z",
@@ -27,6 +33,8 @@ const currencyResults = [
     symbol: "xrp"
   },
   {
+    id: 4,
+    isFavorite: true,
     image:
       "https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png?1547034615",
     last_updated: "2019-05-31T11:24:01.611Z",
@@ -36,6 +44,8 @@ const currencyResults = [
     symbol: "bnb"
   },
   {
+    id: 5,
+    isFavorite: false,
     image:
       "https://assets.coingecko.com/coins/images/738/large/eos-eos-logo.png?1547034481",
     last_updated: "2019-05-31T11:24:01.611Z",

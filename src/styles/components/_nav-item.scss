@@ -8,6 +8,10 @@
   text-align: center;
   width: 25%;
 
+  @include breakpoint(tablet) {
+    width: max-content;
+  }
+
   p {
     font-size: 0.6rem;
     margin: 0;

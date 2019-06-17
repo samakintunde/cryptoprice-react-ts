@@ -1,8 +1,16 @@
 .currency-card {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid $gray-e;
   padding: 0.5rem 0;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 100%;
+    margin-right: 2rem;
+  }
 
   &__content {
     display: flex;
