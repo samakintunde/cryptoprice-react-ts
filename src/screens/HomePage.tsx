@@ -12,7 +12,7 @@ import { FavoritesContext } from "../context/FavoritesContext";
 const { TabPane } = Tabs;
 
 const HomePage = () => {
-  const { results } = useContext(HomeContext);
+  const { results, dispatchResults } = useContext(HomeContext);
   const { dispatchFavorites } = useContext(FavoritesContext);
 
   const { currencyResults } = results;
@@ -30,14 +30,14 @@ const HomePage = () => {
       }`
     )
       .then(res => res.json())
-      .then(data => console.log(data.Data));
+      .then(data => dispatchResults([...data.Data]));
   };
 
   useEffect(() => {
     return () => {
       fetchTopCurrencies();
     };
-  }, []);
+  }, [fetchTopCurrencies]);
 
   const renderTabPane = (index: number) => {
     switch (index) {
