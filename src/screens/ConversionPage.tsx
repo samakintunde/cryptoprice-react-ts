@@ -5,6 +5,7 @@ import ConversionForm from "../containers/ConversionForm/ConversionForm";
 import Container from "../components/Container/Container";
 import CurrencyConversionCard from "../components/CurrencyCard/CurrencyConversionCard";
 import CurrencyCard from "../components/CurrencyCard/CurrencyCard";
+import { CURRENCIES_CONVERSION_API } from "../services/api";
 
 const ConversionPage = () => {
   const [fetching, setFetching] = useState(false);
@@ -14,18 +15,15 @@ const ConversionPage = () => {
   const [toAmount, setToAmount] = useState();
   const [fromAmount, setFromAmount] = useState();
 
-  const API = `https://min-api.cryptocompare.com/data/`;
-
   const fetchConversions = (amount: string, from: string, to: string) => {
     setFetching(true);
     fetch(
-      `${API}price?fsym=${from}&tsyms=${to}&api_key=${
+      `${CURRENCIES_CONVERSION_API}?fsym=${from}&tsyms=${to}&api_key=${
         process.env.REACT_APP_CRYPTOCOMPARE_API_KEY
       }`
     )
       .then(data => data.json())
       .then(res => {
-        console.log(res);
         setResult(res);
         setFetching(false);
         setFromAmount(Number(amount));

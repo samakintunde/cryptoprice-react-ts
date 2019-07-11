@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { Tabs } from "antd";
 
@@ -8,6 +8,9 @@ import CurrencyCard from "../components/CurrencyCard/CurrencyCard";
 import homeTabs from "../store/home-tabs";
 import { HomeContext } from "../context/HomeContext";
 import { FavoritesContext } from "../context/FavoritesContext";
+
+import { TOP_CURRENCIES_API } from "../services/api";
+import { formatTime } from "../util/_time";
 
 const { TabPane } = Tabs;
 
@@ -21,23 +24,49 @@ const HomePage = () => {
     dispatchFavorites({ payload: currencyResult });
   };
 
-  const API = "https://min-api.cryptocompare.com/data/top/";
-
-  const fetchTopCurrencies = () => {
-    fetch(
-      `${API}totalvolfull?limit=10&tsym=NGN&api_key=${
-        process.env.REACT_APP_CRYPTOCOMPARE_API_KEY
+  const fetchTopCurrencies = async () => {
+    const res = await fetch(
+      `${TOP_CURRENCIES_API}/totalvolfull?limit=10&tsym=NGN&api_key=${
+      process.env.REACT_APP_CRYPTOCOMPARE_API_KEY
       }`
-    )
-      .then(res => res.json())
-      .then(data => dispatchResults([...data.Data]));
+    );
+
+    const data = await res.json();
+    const results = data.Data;
+
+    console.log(data);
+
+    const topCurrencies = results.map((result: any) => {
+      const infoResult = result.CoinInfo;
+      const displayResult = result.DISPLAY.NGN;
+      const rawResult = result.RAW.NGN;
+
+      // console.log(
+
+      //   displayResult.PRICE;
+      // );
+
+      return {
+        id: infoResult.Id,
+        isFavorite: false,
+        image: `https://cryptocompare.com${displayResult.IMAGEURL}`,
+        last_updated: formatTime(rawResult.LASTUPDATE),
+        name: infoResult.FullName,
+        price: displayResult.PRICE,
+        percentage_change: displayResult.CHANGEPCT24HOUR,
+        symbol: infoResult.Name
+      };
+    });
+
+    dispatchResults({
+      type: "FETCH_TOP_CURRENCIES",
+      results: [...topCurrencies]
+    });
   };
 
   useEffect(() => {
-    return () => {
-      fetchTopCurrencies();
-    };
-  }, [fetchTopCurrencies]);
+    fetchTopCurrencies();
+  }, []);
 
   const renderTabPane = (index: number) => {
     switch (index) {

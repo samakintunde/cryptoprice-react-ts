@@ -1,16 +1,13 @@
-import currencyResults from "../../store/currency-results";
-
 // Initial State
 const initialState: any = {
-  currencyResults
+  currencyResults: []
 };
 
 const homeReducer = (state: any = initialState, action: any) => {
   switch (action.type) {
-    case "CHANGE_ACTIVE_TAB":
+    case "FETCH_TOP_CURRENCIES":
       return {
-        activeTab: action.tab,
-        ...currencyResults
+        currencyResults: action.results
       };
     default:
       return state;
