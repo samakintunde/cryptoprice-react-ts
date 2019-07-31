@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "975c8348d42a4452a044cc6aea481d19",
+    "revision": "30c7660417e3f973efcda93c2683ced3",
     "url": "/cryptoprice-react-ts/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cryptoprice-react-ts/static/css/2.a317ec87.chunk.css"
   },
   {
-    "revision": "badf4cc2413ab3d3c5e7",
-    "url": "/cryptoprice-react-ts/static/css/main.095a7be7.chunk.css"
+    "revision": "dece64c131f97c76292c",
+    "url": "/cryptoprice-react-ts/static/css/main.06e6d398.chunk.css"
   },
   {
     "revision": "d48fcb11ce6817d51577",
     "url": "/cryptoprice-react-ts/static/js/2.457d1468.chunk.js"
   },
   {
-    "revision": "badf4cc2413ab3d3c5e7",
-    "url": "/cryptoprice-react-ts/static/js/main.598b5a2e.chunk.js"
+    "revision": "dece64c131f97c76292c",
+    "url": "/cryptoprice-react-ts/static/js/main.8cf4ebe4.chunk.js"
   },
   {
     "revision": "fa95182e1ab97cf2c35d",
