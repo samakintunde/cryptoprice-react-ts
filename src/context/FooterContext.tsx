@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
-import { initialState, footerReducer } from "../reducers/footer/footer-reducer";
+import { initialState, footerReducer } from "./../reducers/footer/footer-reducer";
 
 const FooterContext = createContext(initialState);
 
