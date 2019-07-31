@@ -1,11 +1,16 @@
-const fiatCurrencies = ["NGN", "USD", "GBP", "EUR"];
+const fiatCurrencies: {[shortName: string]: string} = {
+  NGN: 'Nigerian Naira',
+  USD: "US Dollars",
+  GBP: "British Pounds",
+  EUR: 'Euro'
+};
 
-const cryptoCurrencies = [
-  { short: "BTC", full: "Bitcoin" },
-  { short: "ETH", full: "Ethereum" },
-  { short: "XRP", full: "Ripple" },
-  { short: "XMR", full: "Monero" },
-  { short: "LTC", full: "Litecoin" }
-];
+const cryptoCurrencies: {[shortName: string]: string} = {
+  BTC: "Bitcoin",
+  ETH: "Ethereum",
+  XRP: "Ripple" ,
+  XMR: "Monero",
+  LTC: "Litecoin"
+};
 
 export { fiatCurrencies, cryptoCurrencies };

@@ -1,4 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Overpass&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:600&display=swap");
+
+$global-font-size: 16;
+
+// Convert Px to Rem
+@function rem-calc($size) {
+  @return #{$size/$global-font-size}rem;
+}
 
 h1,
 h2,
@@ -6,9 +13,53 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Overpass", sans-serif;
+  font-family: 'Work Sans', Arial, Helvetica, sans-serif;
 }
 
 p {
   margin: 0rem;
+}
+
+.display {
+  font-weight: 700;
+  font-size: rem-calc(32);
+  
+  @include breakpoint(desktop) {
+    font-size: rem-calc(36);
+  }
+}
+
+.title {
+  font-size: rem-calc(28);
+  font-weight: 700;
+  
+  @include breakpoint(desktop) {
+    font-size: rem-calc(32);
+  }
+}
+
+.text {
+  font-size: rem-calc(16);
+  font-weight: 700;
+  
+  @include breakpoint(desktop) {
+    font-size: rem-calc(18);
+  }
+}
+
+.subtitle {
+  font-size: rem-calc(20);
+  font-weight: 500;
+  
+  @include breakpoint(desktop) {
+    font-size: rem-calc(24);
+  }
+}
+.caption {
+  font-size: rem-calc(12);
+  font-weight: 400;
+
+  @include breakpoint(desktop) {
+    font-size: rem-calc(10);
+  }
 }

@@ -10,14 +10,13 @@ const FavoritesPage = () => {
 
   const { currencyResults } = results;
 
-  const handleFavorite = (currencyResult: object) => {
+  const handleFavorite = (currencyResult: object) =>
     dispatchFavorites({ payload: currencyResult });
-  };
 
   return (
     <Container padding="1rem 0.75rem">
       {currencyResults.map(
-        (currencyResult: any, i: string | number | undefined) => {
+        (currencyResult: any, i: string | number) => {
           if (currencyResult.isFavorite) {
             return (
               <CurrencyCard

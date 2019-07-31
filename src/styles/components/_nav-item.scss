@@ -1,12 +1,14 @@
 .nav__item {
-  background-color: $black;
-  color: $gray-a;
+  background-color: color(white);
+  color: color(gray-a);
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 1rem 0.75rem;
   text-align: center;
   width: 25%;
+  cursor: pointer;
+  transform-origin: center;
 
   @include breakpoint(tablet) {
     width: max-content;
@@ -20,11 +22,11 @@
   }
 
   &:hover {
-    // background-color: $gray-3;
+    // transform: scale(1.1);
   }
 
   &--active {
     @extend .nav__item;
-    color: $white;
+    color: color(primary);
   }
 }

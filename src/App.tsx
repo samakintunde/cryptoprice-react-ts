@@ -27,7 +27,7 @@ const App: React.FC = () => {
         return <FavoritesPage />;
 
       default:
-        return <h3>Nothing to see here, hurry along now!</h3>;
+        return <h3>Built by Samakintunde</h3>;
     }
   };
 

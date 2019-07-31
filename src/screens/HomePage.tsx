@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 
-import { Tabs } from "antd";
+import { Tabs, Icon } from "antd";
 
 import Container from "../components/Container/Container";
 import CurrencyCard from "../components/CurrencyCard/CurrencyCard";
 
-import homeTabs from "../store/home-tabs";
 import { HomeContext } from "../context/HomeContext";
 import { FavoritesContext } from "../context/FavoritesContext";
 
@@ -26,26 +25,18 @@ const HomePage = () => {
 
   const fetchTopCurrencies = async () => {
     const res = await fetch(
-      `${TOP_CURRENCIES_API}/totalvolfull?limit=10&tsym=NGN&api_key=${
-      process.env.REACT_APP_CRYPTOCOMPARE_API_KEY
+      `${TOP_CURRENCIES_API}/totalvolfull?limit=20&tsym=NGN&api_key=${
+        process.env.REACT_APP_CRYPTOCOMPARE_API_KEY
       }`
     );
-
     const data = await res.json();
     const results = data.Data;
-
-    console.log(data);
 
     const topCurrencies = results.map((result: any) => {
       const infoResult = result.CoinInfo;
       const displayResult = result.DISPLAY.NGN;
       const rawResult = result.RAW.NGN;
-
-      // console.log(
-
-      //   displayResult.PRICE;
-      // );
-
+      
       return {
         id: infoResult.Id,
         isFavorite: false,
@@ -60,7 +51,7 @@ const HomePage = () => {
 
     dispatchResults({
       type: "FETCH_TOP_CURRENCIES",
-      results: [...topCurrencies]
+      results: topCurrencies
     });
   };
 
@@ -128,6 +119,19 @@ const HomePage = () => {
     }
   };
 
+  const homeTabs =  [
+      <span>
+        <Icon type='global'/>Global
+      </span>,
+      <span>
+        <Icon type='rise'/>Top Gainers
+      </span>,
+      <span>
+        <Icon type='fall'/>Top Losers
+      </span>
+    ];
+  
+
   return (
     <div>
       <Tabs
@@ -135,10 +139,9 @@ const HomePage = () => {
         tabPosition="top"
         tabBarStyle={{ display: "flex", width: "100%" }}
       >
-        {homeTabs.map((tab: string, index: number) => (
+        {homeTabs.map<JSX.Element>((tab: JSX.Element, index: number) => (
           <TabPane tab={tab} key={`${index}`}>
-            <Container padding="0 0.75rem">{renderTabPane(index)}</Container>
-            {/* {renderTabPane(index)} */}
+            <Container padding="0 0.75rem 0.75rem 0.75rem">{renderTabPane(index)}</Container>
           </TabPane>
         ))}
       </Tabs>

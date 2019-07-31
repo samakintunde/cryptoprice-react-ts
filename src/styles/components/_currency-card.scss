@@ -2,8 +2,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid $gray-e;
-  padding: 0.5rem 0;
+  padding: rem-calc(16);
+  margin-bottom: 0.5rem;
+  background-color: color(white);
+  border-radius: rem-calc(4);
+  box-shadow: $shadow-mid;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    box-shadow: $shadow-small;
+  }
 
   &__wrapper {
     display: flex;
@@ -22,7 +31,7 @@
     position: relative;
 
     img {
-      max-height: 3rem;
+      max-height: 2rem;
     }
 
     &:after {
@@ -34,8 +43,7 @@
   }
 
   &__caption {
-    font-size: 0.75rem;
-    color: $gray-5;
+    color: color(gray-a);
     text-transform: uppercase;
     margin-bottom: 0;
   }
@@ -44,7 +52,11 @@
   &__price {
     margin-bottom: 0;
     font-weight: bold;
-    color: $black;
+    color: color(black);
+  }
+
+  &__title {
+    letter-spacing: rem-calc(0.25);
   }
 
   &__numbers {
@@ -52,4 +64,5 @@
     display: flex;
     flex-direction: column;
   }
+
 }

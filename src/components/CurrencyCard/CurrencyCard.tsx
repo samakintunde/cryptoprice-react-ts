@@ -1,5 +1,7 @@
-import React from "react";
 import { Icon } from "antd";
+import React from "react";
+
+import { roundNumber } from "../../util/_amount";
 
 interface Currency {
   id: number;
@@ -26,12 +28,6 @@ const CurrencyCard = ({ currencyResult, handleFavorite }: Props) => {
     percentage_change,
     symbol
   } = currencyResult;
-  // const { dispatchFavorites } = useContext(FavoritesContext);
-  // console.log("currencycard", favorites[id]);
-
-  const round = (num: string, dp: number) => {
-    return parseFloat(num).toFixed(dp);
-  };
 
   const change = percentage_change.slice(0, 1) !== "-";
 
@@ -43,12 +39,12 @@ const CurrencyCard = ({ currencyResult, handleFavorite }: Props) => {
             <img src={image} alt={name} />
           </div>
           <div>
-            <p className="currency-card__caption">{symbol}</p>
-            <p className="currency-card__title">{name}</p>
+            <p className="currency-card__caption caption">{symbol}</p>
+            <p className="currency-card__title text">{name}</p>
           </div>
         </div>
         <div className="currency-card__numbers">
-          <div className="currency-card__price">NGN {round(price, 2)}</div>
+          <div className="currency-card__price">{price}</div>
           <span>
             {change ? (
               <Icon
@@ -63,18 +59,18 @@ const CurrencyCard = ({ currencyResult, handleFavorite }: Props) => {
                 style={{ color: "#cc0000" }}
               />
             )}{" "}
-            {round(percentage_change, 2)}%
+            {roundNumber(percentage_change, 2)}%
           </span>
         </div>
       </div>
-      <Icon
-        type="heart"
-        theme={isFavorite ? "filled" : "outlined"}
-        style={{ color: "#ff0000", fontSize: "1.25rem" }}
-        onClick={() => {
-          handleFavorite(currencyResult);
-        }}
-      />
+        <Icon
+          type="heart"
+          theme={isFavorite ? "filled" : "outlined"}
+          style={{ color: "#ff0000", fontSize: "1.25rem" }}
+          onClick={() => {
+            handleFavorite(currencyResult);
+          }}
+        />
     </article>
   );
 };

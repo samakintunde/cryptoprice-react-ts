@@ -1,10 +1,18 @@
-$primary: #ff0000;
-$secondary: #00ff00;
-$tertiary: #0000ff;
-$white: #ffffff;
-$gray-e: #eeeeee;
-$gray-c: #cccccc;
-$gray-a: #aaaaaa;
-$gray-5: #555555;
-$gray-3: #333333;
-$black: #000000;
+$colors: (
+  primary-light: #77A7DF,
+  primary: #3D6DD1,
+  tertiary: #45A56A,
+  secondary: #45A56A,
+  white: #ffffff,
+  off-white: #fcfcfc,
+  gray-e: #eeeeee,
+  gray-c: #cccccc,
+  gray-a: #aaaaaa,
+  gray-5: #555555,
+  gray-3: #333333,
+  black: #000000
+);
+
+@function color($color) {
+  @return map-get($map: $colors, $key: $color);
+}

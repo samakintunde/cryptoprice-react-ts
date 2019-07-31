@@ -2,6 +2,8 @@
 @import "./styles/abstract/breakpoints";
 @import "./styles/abstract/typography";
 @import "./styles/abstract/colors";
+@import "./styles/abstract/shadows";
+@import "./styles/abstract/transitions";
 
 // COMPONENTS
 @import "./styles/components/header";
@@ -9,24 +11,28 @@
 @import "./styles/components/tab.scss";
 @import "./styles/components/card.scss";
 @import "./styles/components/currency-card.scss";
-@import "./styles/components/currency-conversion-card.scss";
 @import "./styles/components/footer";
 @import "./styles//components/conversion";
 
+body {
+  box-sizing: border-box;
+}
+
 .main-wrapper {
+  margin-top: rem-calc(56);
   position: fixed;
-  // top: 3.5rem;
-  // height: 100vh;
-  height: calc(100vh - 7rem);
+  height: calc(100vh - 10rem);
   width: 100%;
   overflow-y: scroll;
-
+  background-color: color(off-white);
+  
   @include breakpoint(tablet) {
+    height: calc(100vh - 3.3rem);
     padding-left: 5rem;
   }
 }
 
 .conversion-submit-btn {
   border: 0;
-  background-color: $black;
+  background-color: color(primary);
 }

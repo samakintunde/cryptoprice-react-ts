@@ -7,18 +7,27 @@
 
   > div:first-child {
     display: flex;
-    background-color: $black;
-    color: $white;
-
+    background-color: color(primary-light);
+    color: color(white);
+    
     .ant-tabs-tab {
       width: 100%;
       margin: 0;
       text-align: center;
       transition: 0.3s;
+      
+      &:hover {
+        color: color(gray-e);
+        background-color: darken(color(primary-light), 5%);
+      }
     }
-
+    
     .ant-tabs-tab-active {
-      background-color: $gray-3;
+      color: color(white);
+      background-color: color(primary);
+      &:hover {
+        background-color: darken(color(primary), 5%);
+      }
     }
   }
 }
