@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4b054211e3d144d140f3d8062b1a4364",
+    "revision": "829d9c5483d1df47b5c2e5dda98a548c",
     "url": "/cryptoprice-react-ts/index.html"
   },
   {
